@@ -97,7 +97,8 @@ namespace HR.DataModel.DAL
         {
             using (var context = new HumanResourceContext())
             {
-                context.Entry<Employee>(employee).State = EntityState.Deleted;
+                Employee theEmployee = GetEmployee(employee.Id);
+                context.Entry<Employee>(theEmployee).State = EntityState.Deleted;
                 context.SaveChanges();
             }
         }

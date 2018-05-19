@@ -25,12 +25,6 @@ namespace HR.Web.Controllers
             return View(employees);
         }
 
-        // GET: Employee/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: Employee/Create
         public ActionResult Create()
         {
@@ -102,17 +96,18 @@ namespace HR.Web.Controllers
         // GET: Employee/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Employee theEmployee = hrRepository.GetEmployee(id);
+            return View(theEmployee);
         }
 
         // POST: Employee/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(Employee employee)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                hrRepository.DeleteEmployee(employee);
                 return RedirectToAction("Index");
             }
             catch

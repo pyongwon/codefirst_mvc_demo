@@ -93,6 +93,7 @@ namespace HR.Web.Controllers
 
         // POST: Department/Delete/5
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(Department department)
         {
             try
