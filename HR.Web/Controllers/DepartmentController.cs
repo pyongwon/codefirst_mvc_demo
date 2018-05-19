@@ -87,16 +87,17 @@ namespace HR.Web.Controllers
         // GET: Department/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Department theDepartment = hrRepository.GetDepartment(id);
+            return View(theDepartment);
         }
 
         // POST: Department/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(Department department)
         {
             try
             {
-                // TODO: Add delete logic here
+                hrRepository.DeleteDepartment(department);
 
                 return RedirectToAction("Index");
             }
