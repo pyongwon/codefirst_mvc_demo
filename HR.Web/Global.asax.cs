@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HR.Web.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,6 +18,8 @@ namespace HR.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            ControllerBuilder.Current.SetControllerFactory(new DIControllerFactory())
+;
             HR.DataModel.DAL.DBHelper.InitializeDB();
         }
     }

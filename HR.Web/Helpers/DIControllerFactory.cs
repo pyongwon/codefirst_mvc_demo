@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using System.Web.Routing;
+using HR.DataModel.DAL;
 using Ninject;
 
 
@@ -27,7 +28,7 @@ namespace HR.Web.Helpers
         private void AddBindings()
         {
             // put additional bindings here
-            // ninjectKernel.Bind<...>().To<...>();
+            ninjectKernel.Bind<IHRRepository>().To<EFHRRepository>();
         }
     }
 }
