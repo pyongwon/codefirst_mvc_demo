@@ -32,17 +32,20 @@ namespace HR.DataModel.Entities
 
         [MaxLength(12, ErrorMessage = "PhoneNumber cannot exceed more the 12 characters")]
         [RegularExpression(@"^\d{3}-\d{3}-\d{4}$", ErrorMessage = "PhoneNumber should be like 'xxx-xxx-xxxx'")]
+        [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "Email Address is required")]
         [MaxLength(50, ErrorMessage = "Email Address cannot exceed more the 50 characters")]
         [RegularExpression(@"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$", ErrorMessage = "Email is not a valid format")]
+        [Display(Name = "Email Address")]
         public string EmailAddress { get; set; }
 
         [Range(0, 1000000, ErrorMessage = "Salary may be between 0 an 1M")]
         [DisplayFormat(DataFormatString = "{0:c}")]
         public decimal Salary { get; set; }
 
+        [Display(Name = "Is Contract")]
         public bool IsContract { get; set; }
 
         [Column(TypeName = "image")]
