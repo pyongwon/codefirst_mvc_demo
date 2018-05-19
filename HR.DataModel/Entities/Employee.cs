@@ -40,6 +40,7 @@ namespace HR.DataModel.Entities
         public string EmailAddress { get; set; }
 
         [Range(0, 1000000, ErrorMessage = "Salary may be between 0 an 1M")]
+        [DisplayFormat(DataFormatString = "{0:c}")]
         public decimal Salary { get; set; }
 
         public bool IsContract { get; set; }

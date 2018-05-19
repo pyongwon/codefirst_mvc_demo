@@ -33,7 +33,7 @@ namespace HR.DataModel.DAL
             IEnumerable<Employee> employees;
             using (var context = new HumanResourceContext())
             {
-                employees = context.Employees.ToList();
+                employees = context.Employees.Include("Department").ToList();
             }
             return employees;
         }
