@@ -57,18 +57,26 @@ namespace HR.Web.Controllers
         // GET: Department/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            Department theDepartment = hrRepository.GetDepartment(id);
+            return View(theDepartment);
         }
 
         // POST: Department/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Department department)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    hrRepository.UpdateDepartment(department);
+                    return RedirectToAction("Index"); // redirect to the list
+                }
+                else
+                {
+                    return View(); // redirect to current and show the validation errors
+                }
             }
             catch
             {
